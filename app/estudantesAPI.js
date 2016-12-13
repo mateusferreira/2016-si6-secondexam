@@ -16,11 +16,27 @@ router.get("/", (request, response) => {
     response.json(alunoDB)
 })
 
+function calcularMedia(aluno){
+    let result = 0;
+    let i = 0;
+    for(; i < 4; i++){
+        result += aluno.grades[i];
+    }
+        result /= 4;
+
+        if (result >= 60) return "Aprovado"
+        else if (result >=50) return "Final"
+        else return "Reprovado"
+}
+
 router.get("/:alunoMatricula", (request, response) => {
     let alunoMatricula = request.params.alunoMatricula
     let alunoData = procuraAluno(alunoMatricula)
     
     if(alunoData) {
+        //let alunoDataWithStatus = calcularMedia(alunoData)
+        //console.log(media)
+        alunoData.status = calcularMedia(alunoData)
         response.json(alunoData)
     }
     else {

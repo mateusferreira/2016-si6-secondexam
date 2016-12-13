@@ -11,7 +11,8 @@
             $('#email').text(student.email);
             $("#photo").attr("src",student.photo);
             
-            $('#status').text(calculaSituacao(student));
+           // $('#status').text(calculaSituacao(student));
+           $('#status').text(student.status);
          
             
             console.log(student)
@@ -29,17 +30,7 @@
 })()
 
 function calculaSituacao(student){
-    //alert(student.grades[0]);
-    //return "retornou algo";
-    let result = 0;
-    for(i = 0; i < 4; i++){
-        result += student.grades[i];
-    }
-        result /= 4;
-        
-        if (result >= 60) return "Aprovado";
-        else if (result >=50) return "Final";
-        else return "Reprovado";
+    alert(student)
     
        
 }
